@@ -103,9 +103,37 @@ def eval_postfix(postfix_queue):
     return operands.pop()
 
 
+class Node:
+    def __init__(self, data, left=None, right=None):
+        self.data, self.left, self.right = data, left, right
+
+    def postfix(self):
+        left = f'{self.left.postfix()} ' if self.left else ''
+        right = f'{self.right.postfix()} ' if self.right else ''
+        op = self.data
+        return f'{left}{right}{op}'
+
+
+class ExpressionTree:
+    def __init__(self, postfix_queue):
+        nodes = []
+        for token in postfix_queue:
+            if isinstance(token, float):
+                nodes.append(Node(token))
+            else:
+                right = nodes.pop()
+                left = nodes.pop()
+                nodes.append(Node(token, left, right))
+        self.root = nodes.pop()
+
+    def postfix(self):
+        return self.root.postfix()
+
 def calc(src):
+    print(src)
     postfix_queue = to_postfix(src)
-    print(postfix_queue)
+    tree = ExpressionTree(postfix_queue)
+    print(tree.postfix())
     value = eval_postfix(postfix_queue)
     return value
 
