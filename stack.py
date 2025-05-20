@@ -107,6 +107,16 @@ class Node:
     def __init__(self, data, left=None, right=None):
         self.data, self.left, self.right = data, left, right
 
+    def infix(self):
+        left = f'{self.left.infix()} ' if self.left else ''
+        op = self.data
+        right = f' {self.right.infix()}' if self.right else ''
+        if left:
+            return f'({left}{op}{right})'
+        else:
+            return f'{op}'
+
+
     def postfix(self):
         left = f'{self.left.postfix()} ' if self.left else ''
         right = f'{self.right.postfix()} ' if self.right else ''
@@ -126,6 +136,9 @@ class ExpressionTree:
                 nodes.append(Node(token, left, right))
         self.root = nodes.pop()
 
+    def infix(self):
+        return self.root.infix()
+
     def postfix(self):
         return self.root.postfix()
 
@@ -133,7 +146,8 @@ def calc(src):
     print(src)
     postfix_queue = to_postfix(src)
     tree = ExpressionTree(postfix_queue)
-    print(tree.postfix())
+    print('Infix  :', tree.infix())
+    print('Postfix:', tree.postfix())
     value = eval_postfix(postfix_queue)
     return value
 
