@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15db2e8a-769a-4b2d-bfc4-211d131ab76c" name="Changes" comment="Expression Tree&#10;In-fix Notation">
+    <list default="true" id="15db2e8a-769a-4b2d-bfc4-211d131ab76c" name="Changes" comment="Expression Tree">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/stack.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +133,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1747764806365</updated>
-      <workItem from="1747764807387" duration="14021000" />
+      <workItem from="1747764807387" duration="15381000" />
     </task>
     <task id="LOCAL-00001" summary="Python Stack 계산기">
       <option name="closed" value="true" />
@@ -184,7 +183,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747777420886</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Expression Tree">
+      <option name="closed" value="true" />
+      <created>1747778976168</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1747778976168</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,7 +215,8 @@
     <MESSAGE value="eval_postfix" />
     <MESSAGE value="Expression Tree&#10;Postfix Notation" />
     <MESSAGE value="Expression Tree&#10;In-fix Notation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Expression Tree&#10;In-fix Notation" />
+    <MESSAGE value="Expression Tree" />
+    <option name="LAST_COMMIT_MESSAGE" value="Expression Tree" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/StackCalculator_Python$stack.coverage" NAME="stack Coverage Results" MODIFIED="1747778898749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
