@@ -68,7 +68,7 @@ def to_postfix(src):
                 while op_stack and is_op_multi_divide(op_stack[-1]):
                     postfix_queue.append(op_stack.pop())
             else:
-                while op_stack and not is_lparen(op_stack[-1]):
+                while op_stack and is_op(op_stack[-1]):
                     postfix_queue.append(op_stack.pop())
             op_stack.append(lexer.get_token())
         token = lexer.peek_token()
@@ -107,6 +107,12 @@ class Node:
     def __init__(self, data, left=None, right=None):
         self.data, self.left, self.right = data, left, right
 
+    def prefix(self):
+        op = self.data
+        left = f' {self.left.prefix()}' if self.left else ''
+        right = f' {self.right.prefix()}' if self.right else ''
+        return f'{op}{left}{right}'
+
     def infix(self):
         left = f'{self.left.infix()} ' if self.left else ''
         op = self.data
@@ -136,6 +142,9 @@ class ExpressionTree:
                 nodes.append(Node(token, left, right))
         self.root = nodes.pop()
 
+    def prefix(self):
+        return self.root.prefix()
+
     def infix(self):
         return self.root.infix()
 
@@ -146,6 +155,7 @@ def calc(src):
     print(src)
     postfix_queue = to_postfix(src)
     tree = ExpressionTree(postfix_queue)
+    print('Prefix :', tree.prefix())
     print('Infix  :', tree.infix())
     print('Postfix:', tree.postfix())
     value = eval_postfix(postfix_queue)
@@ -153,6 +163,6 @@ def calc(src):
 
 
 if __name__ == '__main__':
-    src = '(1*2)+(3/3)'
+    src = '((1+3)*((1-3)-2 - (3+5))+(3/(2-3)))'
     val = calc(src)
     print(val)
