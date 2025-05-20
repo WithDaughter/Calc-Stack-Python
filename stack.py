@@ -77,12 +77,40 @@ def to_postfix(src):
     return postfix_queue
 
 
-def stack(src):
+def calc_infix(op, left, right):
+    if op == '+':
+        return left + right
+    elif op == '-':
+        return left - right
+    elif op == '/':
+        return left / right
+    elif op == '*':
+        return left * right
+    else:
+        raise ValueError('Invalid operator')
+
+
+def eval_postfix(postfix_queue):
+    is_op = lambda t: t in '+-*/'
+    operands = []
+    for token in postfix_queue:
+        if isinstance(token, float):
+            operands.append(token)
+        elif is_op(token):
+            right = operands.pop()
+            left = operands.pop()
+            operands.append(calc_infix(token, left, right))
+    return operands.pop()
+
+
+def calc(src):
     postfix_queue = to_postfix(src)
-    return postfix_queue
+    print(postfix_queue)
+    value = eval_postfix(postfix_queue)
+    return value
 
 
 if __name__ == '__main__':
-    src = '(1*2)+(2/3)'
-    val = stack(src)
+    src = '(1*2)+(3/3)'
+    val = calc(src)
     print(val)

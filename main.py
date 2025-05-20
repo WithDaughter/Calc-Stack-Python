@@ -1,9 +1,9 @@
-from stack import stack
+from stack import calc
 
 
 def main():
     src = '1+2'
-    val = stack(src)
+    val = calc(src)
     print(val)
 
 
